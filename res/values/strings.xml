@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">RoboComp Score Keeper</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_all_teams">AllTeamsActivity</string>
+    <string name="title_activity_new_team">NewTeamActivity</string>
+    <string-array name="touches_array">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4+</item>
+    </string-array>
+    <string-array name="tracks_array">
+        <item>Yellow</item>
+        <item>Blue</item>
+    </string-array>
+
+</resources>
