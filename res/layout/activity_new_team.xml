@@ -43,7 +43,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dip"
         android:layout_marginBottom="15dip"
-        android:singleLine="true"/>
+        android:singleLine="true"
+        android:inputType="numberDecimal"/>
  
     <!-- Time Minutes Label -->
     <TextView android:layout_width="fill_parent"

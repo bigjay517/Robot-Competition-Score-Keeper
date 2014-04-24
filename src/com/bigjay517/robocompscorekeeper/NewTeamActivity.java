@@ -33,7 +33,7 @@ public class NewTeamActivity extends Activity {
     Spinner inputTouches;
     
     // url to create new product
-    private static String url_create_team = "http://10.0.0.21/robocomp/create_team.php";
+    private static String url_create_team = "http://141.215.221.140/robocomp/create_team.php";
  
     // JSON Node names
     private static final String TAG_SUCCESS = "success";
