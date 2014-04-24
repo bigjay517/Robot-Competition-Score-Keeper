@@ -28,15 +28,17 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f090008;
-        public static final int btnCreateTeam=0x7f090005;
-        public static final int id=0x7f090006;
-        public static final int inputTeam=0x7f090001;
-        public static final int inputTimeMinutes=0x7f090002;
-        public static final int inputTimeSeconds=0x7f090003;
-        public static final int inputTouches=0x7f090004;
-        public static final int inputTrack=0x7f090000;
-        public static final int name=0x7f090007;
+        public static final int action_settings=0x7f09000a;
+        public static final int btnCreateTeam=0x7f090002;
+        public static final int btnViewTeams=0x7f090001;
+        public static final int id=0x7f090008;
+        public static final int inputTeam=0x7f090004;
+        public static final int inputTimeMinutes=0x7f090005;
+        public static final int inputTimeSeconds=0x7f090006;
+        public static final int inputTouches=0x7f090007;
+        public static final int inputTrack=0x7f090003;
+        public static final int name=0x7f090009;
+        public static final int textView1=0x7f090000;
     }
     public static final class layout {
         public static final int activity_all_teams=0x7f030000;

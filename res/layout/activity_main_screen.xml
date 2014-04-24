@@ -8,9 +8,20 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainScreenActivity" >
 
-    <TextView
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/btnViewTeams"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="View Teams" />
+
+    <Button
+        android:id="@+id/btnCreateTeam"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnViewTeams"
+        android:layout_below="@+id/btnViewTeams"
+        android:text="Add New Team" />
 
 </RelativeLayout>

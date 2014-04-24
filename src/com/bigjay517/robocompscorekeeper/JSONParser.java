@@ -94,6 +94,7 @@ public class JSONParser {
         }
  
         // return JSON String
+        Log.e("JSON Parser", "Object created.  Returning...");
         return jObj;
  
     }

@@ -33,7 +33,7 @@ public class NewTeamActivity extends Activity {
     Spinner inputTouches;
     
     // url to create new product
-    private static String url_create_team = "http://localhost/robocomp/create_team.php";
+    private static String url_create_team = "http://10.0.0.21/robocomp/create_team.php";
  
     // JSON Node names
     private static final String TAG_SUCCESS = "success";
@@ -95,15 +95,43 @@ public class NewTeamActivity extends Activity {
          * Creating product
          * */
         protected String doInBackground(String... args) {
-            String name = inputTeam.getText().toString();
-            String price = inputTimeMinutes.getText().toString();
-            String description = inputTimeSeconds.getText().toString();
+            int team = Integer.parseInt(inputTeam.getText().toString());
+            int timeMinutes = Integer.parseInt(inputTimeMinutes.getText().toString());
+            int timeSeconds = Integer.parseInt(inputTimeSeconds.getText().toString());
+            int track = inputTrack.getSelectedItemPosition();
+            int touches = inputTouches.getSelectedItemPosition();
+            int penalty;
+            
+            // Determine Penalty
+            switch(touches) {
+            case 0:
+            	penalty = 0;
+            	break;
+            case 1:
+            	penalty = 2;
+            	break;
+            case 2:
+            	penalty = 7;
+            	break;
+            case 3:
+            	penalty = 12;
+            	break;
+            default:
+            	penalty = 27;
+            	break;
+            }
+            
+            // Create score and time
+            int time = timeMinutes*60+timeSeconds;
+            int score = time+penalty;
  
             // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
-            params.add(new BasicNameValuePair("name", name));
-            params.add(new BasicNameValuePair("price", price));
-            params.add(new BasicNameValuePair("description", description));
+            params.add(new BasicNameValuePair("team", Integer.toString(team)));
+            params.add(new BasicNameValuePair("time", Integer.toString(time)));
+            params.add(new BasicNameValuePair("track", Integer.toString(track)));
+            params.add(new BasicNameValuePair("score", Integer.toString(score)));
+            params.add(new BasicNameValuePair("touches", Integer.toString(touches)));
  
             // getting JSON Object
             // Note that create product url accepts POST method

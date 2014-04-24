@@ -32,7 +32,7 @@ public class AllTeamsActivity extends ListActivity {
 	
 	ArrayList<HashMap<String, String>> teamsList;
 	
-	private static String url_all_teams = "http://localhost/robocomp/get_all_teams.php";
+	private static String url_all_teams = "http://10.0.0.21/robocomp/get_all_teams.php";
 	
     // JSON Node names
     private static final String TAG_SUCCESS = "success";
@@ -112,7 +112,7 @@ public class AllTeamsActivity extends ListActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             pDialog = new ProgressDialog(AllTeamsActivity.this);
-            pDialog.setMessage("Loading products. Please wait...");
+            pDialog.setMessage("Loading teams. Please wait...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(false);
             pDialog.show();
