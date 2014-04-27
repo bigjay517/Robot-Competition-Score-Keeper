@@ -32,7 +32,7 @@ public class AllTeamsActivity extends ListActivity {
 	
 	ArrayList<HashMap<String, String>> teamsList;
 	
-	private static String url_all_teams = "http://141.215.221.140/robocomp/get_all_teams.php";
+	private static String url_all_teams = "http://10.0.2.2/robocomp/get_all_teams.php";
 	
     // JSON Node names
     private static final String TAG_SUCCESS = "success";
@@ -51,14 +51,14 @@ public class AllTeamsActivity extends ListActivity {
         // Hashmap for ListView
         teamsList = new ArrayList<HashMap<String, String>>();
  
-        // Loading products in Background Thread
+        // Loading team in Background Thread
         new LoadAllTeams().execute();
  
         // Get listview
         ListView lv = getListView();
  
-        // on seleting single product
-        // launching Edit Product Screen
+        // on seleting single team
+        // launching Edit team Screen
         lv.setOnItemClickListener(new OnItemClickListener() {
  
             @Override
@@ -67,24 +67,24 @@ public class AllTeamsActivity extends ListActivity {
                 String pid = ((TextView) view.findViewById(R.id.id)).getText().toString();
  
                 // Starting new intent
-                //Intent in = new Intent(getApplicationContext(), EditTeamActivity.class);  //REMOVE
+                Intent in = new Intent(getApplicationContext(), EditTeamActivity.class);
                 // sending pid to next activity
-                //in.putExtra(TAG_ID, id);  //REMOVE
+                in.putExtra(TAG_ID, pid);
  
                 // starting new activity and expecting some response back
-                //startActivityForResult(in, 100);  //REMOVE
+                startActivityForResult(in, 100);
             }
         });
 	}
 	
-	// Response from Edit Product Activity
+	// Response from Edit team Activity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         // if result code 100
         if (resultCode == 100) {
             // if result code 100 is received
-            // means user edited/deleted product
+            // means user edited/deleted team
             // reload this screen again
             Intent intent = getIntent();
             finish();
@@ -135,8 +135,8 @@ public class AllTeamsActivity extends ListActivity {
                 int success = json.getInt(TAG_SUCCESS);
  
                 if (success == 1) {
-                    // products found
-                    // Getting Array of Products
+                    // teams found
+                    // Getting Array of team
                     teams = json.getJSONArray(TAG_ROBOCOMP);
  
                     // looping through All Products
@@ -158,8 +158,8 @@ public class AllTeamsActivity extends ListActivity {
                         teamsList.add(map);
                     }
                 } else {
-                    // no products found
-                    // Launch Add New product Activity
+                    // no teams found
+                    // Launch Add New team Activity
                     Intent i = new Intent(getApplicationContext(), NewTeamActivity.class);
                     // Closing all previous activities
                     i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -176,11 +176,9 @@ public class AllTeamsActivity extends ListActivity {
          * After completing background task Dismiss the progress dialog
          * **/
         protected void onPostExecute(String file_url) {
-            // dismiss the dialog after getting all products
+            // dismiss the dialog after getting all team
             pDialog.dismiss();
             // updating UI from Background Thread
-            runOnUiThread(new Runnable() {
-                public void run() {
                     /**
                      * Updating parsed JSON data into ListView
                      * */
@@ -190,8 +188,6 @@ public class AllTeamsActivity extends ListActivity {
                             new int[] { R.id.id, R.id.name });
                     // updating listview
                     setListAdapter(adapter);
-                }
-            });
  
         }
  

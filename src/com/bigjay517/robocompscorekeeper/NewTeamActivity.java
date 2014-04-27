@@ -32,8 +32,8 @@ public class NewTeamActivity extends Activity {
     Spinner inputTrack;
     Spinner inputTouches;
     
-    // url to create new product
-    private static String url_create_team = "http://141.215.221.140/robocomp/create_team.php";
+    // url to create new team
+    private static String url_create_team = "http://10.0.2.2/robocomp/create_team.php";
  
     // JSON Node names
     private static final String TAG_SUCCESS = "success";
@@ -60,7 +60,7 @@ public class NewTeamActivity extends Activity {
  
             @Override
             public void onClick(View view) {
-                // creating new product in background thread
+                // creating new team in background thread
                 new CreateNewTeam().execute();
             }
         });
@@ -134,7 +134,7 @@ public class NewTeamActivity extends Activity {
             params.add(new BasicNameValuePair("touches", Integer.toString(touches)));
  
             // getting JSON Object
-            // Note that create product url accepts POST method
+            // Note that create team url accepts POST method
             JSONObject json = jsonParser.makeHttpRequest(url_create_team, "POST", params);
  
             // check log cat from response
@@ -145,14 +145,14 @@ public class NewTeamActivity extends Activity {
                 int success = json.getInt(TAG_SUCCESS);
  
                 if (success == 1) {
-                    // successfully created product
+                    // successfully created team
                     Intent i = new Intent(getApplicationContext(), AllTeamsActivity.class);
                     startActivity(i);
  
                     // closing this screen
                     finish();
                 } else {
-                    // failed to create product
+                    // failed to create team
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

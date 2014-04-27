@@ -9,99 +9,58 @@
     tools:context=".NewTeamActivity"
     android:orientation="vertical" >
 
-    <!-- Track Label -->
     <TextView android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Track"
-        android:paddingLeft="10dip"
-        android:paddingRight="10dip"
-        android:paddingTop="10dip"
-        android:textSize="17dip"/>
+        android:text="Track"/>
     
-    <!-- Track Selection -->
     <Spinner
         android:id="@+id/inputTrack"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dip"
-        android:layout_marginBottom="15dip"
         android:entries="@array/tracks_array"
         android:singleLine="true" />
     
-	<!-- Team Label -->
     <TextView android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Team Number"
-        android:paddingLeft="10dip"
-        android:paddingRight="10dip"
-        android:paddingTop="10dip"
-        android:textSize="17dip"/>
+        android:text="Team Number"/>
  
-    <!-- Input Team -->
     <EditText android:id="@+id/inputTeam"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dip"
-        android:layout_marginBottom="15dip"
         android:singleLine="true"
         android:inputType="numberDecimal"/>
  
-    <!-- Time Minutes Label -->
     <TextView android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Time (mins)"
-        android:paddingLeft="10dip"
-        android:paddingRight="10dip"
-        android:paddingTop="10dip"
-        android:textSize="17dip"/>
+        android:text="Time (mins)"/>
  
-    <!-- Input Time Minutes -->
     <EditText android:id="@+id/inputTimeMinutes"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dip"
-        android:layout_marginBottom="15dip"
         android:singleLine="true"
         android:inputType="numberDecimal"/>
     
-    <!-- Time Seconds Label -->
     <TextView android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Time (secs)"
-        android:paddingLeft="10dip"
-        android:paddingRight="10dip"
-        android:paddingTop="10dip"
-        android:textSize="17dip"/>
+        android:text="Time (secs)"/>
  
-    <!-- Input Time Seconds -->
     <EditText android:id="@+id/inputTimeSeconds"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dip"
-        android:layout_marginBottom="15dip"
         android:singleLine="true"
         android:inputType="numberDecimal"/>
     
-    <!-- Touches Label -->
     <TextView android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Touches"
-        android:paddingLeft="10dip"
-        android:paddingRight="10dip"
-        android:paddingTop="10dip"
-        android:textSize="17dip"/>
+        android:text="Touches"/>
  
-    <!-- Input Touches -->
     <Spinner
         android:id="@+id/inputTouches"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dip"
-        android:layout_marginBottom="15dip"
         android:entries="@array/touches_array"
         android:singleLine="true" />
    
-    <!-- Button Create Product -->
     <Button android:id="@+id/btnCreateTeam"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

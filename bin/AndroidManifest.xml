@@ -32,6 +32,10 @@
             android:name="com.bigjay517.robocompscorekeeper.NewTeamActivity"
             android:label="@string/title_activity_new_team" >
         </activity>
+        <activity
+            android:name="com.bigjay517.robocompscorekeeper.EditTeamActivity"
+            android:label="@string/title_activity_edit_team" >
+        </activity>
     </application>
 
 </manifest>

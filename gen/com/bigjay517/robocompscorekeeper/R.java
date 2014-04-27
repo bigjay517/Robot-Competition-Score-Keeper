@@ -28,34 +28,51 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f09000a;
-        public static final int btnCreateTeam=0x7f090002;
-        public static final int btnViewTeams=0x7f090001;
-        public static final int id=0x7f090008;
-        public static final int inputTeam=0x7f090004;
-        public static final int inputTimeMinutes=0x7f090005;
-        public static final int inputTimeSeconds=0x7f090006;
-        public static final int inputTouches=0x7f090007;
-        public static final int inputTrack=0x7f090003;
-        public static final int name=0x7f090009;
+        public static final int action_settings=0x7f090018;
+        public static final int btnCreateTeam=0x7f090010;
+        public static final int btnViewTeams=0x7f09000f;
+        public static final int deleteTeamButton=0x7f09000c;
+        public static final int id=0x7f090016;
+        public static final int inputTeam=0x7f090012;
+        public static final int inputTimeMinutes=0x7f090013;
+        public static final int inputTimeSeconds=0x7f090014;
+        public static final int inputTouches=0x7f090015;
+        public static final int inputTrack=0x7f090011;
+        public static final int name=0x7f090017;
+        public static final int saveTeamButton=0x7f09000e;
+        public static final int teamNumberTextView=0x7f090001;
         public static final int textView1=0x7f090000;
+        public static final int textView2=0x7f090002;
+        public static final int textView3=0x7f090004;
+        public static final int textView4=0x7f090006;
+        public static final int textView5=0x7f090008;
+        public static final int textView6=0x7f09000a;
+        public static final int timeMinutesEditText=0x7f090005;
+        public static final int timeSecondsEditText=0x7f090007;
+        public static final int touchesSpinner=0x7f090009;
+        public static final int trackScoreTextView=0x7f09000b;
+        public static final int trackSelectSpinner=0x7f090003;
+        public static final int view1=0x7f09000d;
     }
     public static final class layout {
         public static final int activity_all_teams=0x7f030000;
-        public static final int activity_main_screen=0x7f030001;
-        public static final int activity_new_team=0x7f030002;
-        public static final int list_item=0x7f030003;
+        public static final int activity_edit_team=0x7f030001;
+        public static final int activity_main_screen=0x7f030002;
+        public static final int activity_new_team=0x7f030003;
+        public static final int list_item=0x7f030004;
     }
     public static final class menu {
         public static final int all_teams=0x7f080000;
-        public static final int main_screen=0x7f080001;
-        public static final int new_team=0x7f080002;
+        public static final int edit_team=0x7f080001;
+        public static final int main_screen=0x7f080002;
+        public static final int new_team=0x7f080003;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
         public static final int hello_world=0x7f050002;
         public static final int title_activity_all_teams=0x7f050003;
+        public static final int title_activity_edit_team=0x7f050005;
         public static final int title_activity_new_team=0x7f050004;
     }
     public static final class style {
