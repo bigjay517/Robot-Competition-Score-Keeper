@@ -24,31 +24,34 @@
         android:layout_height="wrap_content"
         android:text="Team Number"/>
  
-    <EditText android:id="@+id/inputTeam"
+    <EditText
+        android:id="@+id/inputTeam"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:singleLine="true"
-        android:inputType="numberDecimal"/>
+        android:inputType="number"
+        android:singleLine="true" />
  
     <TextView android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Time (mins)"/>
  
-    <EditText android:id="@+id/inputTimeMinutes"
+    <EditText
+        android:id="@+id/inputTimeMinutes"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:singleLine="true"
-        android:inputType="numberDecimal"/>
+        android:inputType="number"
+        android:singleLine="true" />
     
     <TextView android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Time (secs)"/>
  
-    <EditText android:id="@+id/inputTimeSeconds"
+    <EditText
+        android:id="@+id/inputTimeSeconds"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:singleLine="true"
-        android:inputType="numberDecimal"/>
+        android:inputType="number"
+        android:singleLine="true" />
     
     <TextView android:layout_width="fill_parent"
         android:layout_height="wrap_content"

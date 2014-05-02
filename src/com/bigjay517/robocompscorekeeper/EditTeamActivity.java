@@ -57,8 +57,11 @@ public class EditTeamActivity extends Activity {
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_ROBOCOMP = "teams";
 	private static final String TAG_ID = "id";
+	private static final String TAG_TIME = "time";
 	private static final String TAG_TEAM = "team";
 	private static final String TAG_TRACK = "track";
+	private static final String TAG_SCORE = "score";
+	private static final String TAG_TOUCHES = "touches";
 	private static final String TAG_YELLOW_TRACK_TIME = "yellow_track_time";
 	private static final String TAG_YELLOW_TRACK_TOUCHES = "yellow_track_touches";
 	private static final String TAG_YELLOW_TRACK_SCORE = "yellow_track_score";
@@ -118,6 +121,45 @@ public class EditTeamActivity extends Activity {
 				new DeleteTeam().execute();
 			}
 		});
+		
+		touchesSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> arg0, View arg1,
+					int position, long arg3) {
+				// TODO Auto-generated method stub
+				int penalty;
+				int timeSeconds = Integer.parseInt(textTimeSeconds.getText().toString());
+				int timeMinutes = Integer.parseInt(textTimeMinutes.getText().toString());
+				switch (position) {
+				case 0:
+					penalty = 0;
+					break;
+				case 1:
+					penalty = 2;
+					break;
+				case 2:
+					penalty = 7;
+					break;
+				case 3:
+					penalty = 12;
+					break;
+				default:
+					penalty = 27;
+					break;
+				}
+				int time = timeSeconds+timeMinutes*60;
+				int score = time + penalty;
+				textTrackScore.setText(Integer.toString(score));
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 
 		trackSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 
@@ -150,10 +192,13 @@ public class EditTeamActivity extends Activity {
 	private void showYellowTrackData() {
 		// TODO Auto-generated method stub
 		try {
-			textTimeSeconds.setText(teamdata.getString(TAG_YELLOW_TRACK_TIME));
+			int totalTime = Integer.parseInt(teamdata.getString(TAG_YELLOW_TRACK_TIME));
+			int timeMinutes = totalTime/60;
+			int timeSeconds = totalTime-(timeMinutes*60);
+			textTimeSeconds.setText(Integer.toString(timeSeconds));
+			textTimeMinutes.setText(Integer.toString(timeMinutes));
 			textTrackScore.setText(teamdata.getString(TAG_YELLOW_TRACK_SCORE));
-			touchesSpinner.setSelection(Integer.parseInt(teamdata
-					.getString(TAG_YELLOW_TRACK_TOUCHES)));
+			touchesSpinner.setSelection(Integer.parseInt(teamdata.getString(TAG_YELLOW_TRACK_TOUCHES)));
 			textTeamNumber.setText(teamdata.getString(TAG_TEAM));
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -164,10 +209,14 @@ public class EditTeamActivity extends Activity {
 	private void showBlueTrackData() {
 		
 		try {
+			int totalTime = Integer.parseInt(teamdata.getString(TAG_BLUE_TRACK_TIME));
+			int timeMinutes = totalTime/60;
+			int timeSeconds = totalTime-(timeMinutes*60);
+			textTimeSeconds.setText(Integer.toString(timeSeconds));
+			textTimeMinutes.setText(Integer.toString(timeMinutes));
 			textTimeSeconds.setText(teamdata.getString(TAG_BLUE_TRACK_TIME));
 			textTrackScore.setText(teamdata.getString(TAG_BLUE_TRACK_SCORE));
-			touchesSpinner.setSelection(Integer.parseInt(teamdata
-					.getString(TAG_BLUE_TRACK_TOUCHES)));
+			touchesSpinner.setSelection(Integer.parseInt(teamdata.getString(TAG_BLUE_TRACK_TOUCHES)));
 			textTeamNumber.setText(teamdata.getString(TAG_TEAM));
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -184,7 +233,7 @@ public class EditTeamActivity extends Activity {
 	}
 
 	/**
-	 * Background Async Task to Get complete product details
+	 * Background Async Task to Get complete team details
 	 * */
 	class GetTeamDetails extends AsyncTask<String, String, String> {
 
@@ -212,7 +261,7 @@ public class EditTeamActivity extends Activity {
 			try {
 				// Building Parameters
 				List<NameValuePair> params = new ArrayList<NameValuePair>();
-				params.add(new BasicNameValuePair("id", id));
+				params.add(new BasicNameValuePair(TAG_ID, id));
 
 				// getting team details by making HTTP request
 				// Note that team details url will use GET request
@@ -277,12 +326,8 @@ public class EditTeamActivity extends Activity {
 		protected String doInBackground(String... args) {
 
 			// getting updated data from EditTexts
-			/*
-			int timeMinutes = Integer.parseInt(textTimeMinutes.getText()
-					.toString());
-					*/
-			int timeSeconds = Integer.parseInt(textTimeSeconds.getText()
-					.toString());
+			int timeMinutes = Integer.parseInt(textTimeMinutes.getText().toString());
+			int timeSeconds = Integer.parseInt(textTimeSeconds.getText().toString());
 			int touches = touchesSpinner.getSelectedItemPosition();
 			int track = trackSpinner.getSelectedItemPosition();
 			int penalty;
@@ -307,24 +352,20 @@ public class EditTeamActivity extends Activity {
 			}
 
 			// Create score and time
-			int time = timeSeconds;
+			int time = timeSeconds+timeMinutes*60;
 			int score = time + penalty;
-
-			Log.e("TEST", "Time: " + time);
 
 			// Building Parameters
 			List<NameValuePair> params = new ArrayList<NameValuePair>();
-			params.add(new BasicNameValuePair("time", Integer.toString(time)));
-			params.add(new BasicNameValuePair("track", Integer.toString(track)));
-			params.add(new BasicNameValuePair("score", Integer.toString(score)));
-			params.add(new BasicNameValuePair("touches", Integer
-					.toString(touches)));
-			params.add(new BasicNameValuePair("id", id));
+			params.add(new BasicNameValuePair(TAG_TIME, Integer.toString(time)));
+			params.add(new BasicNameValuePair(TAG_TRACK, Integer.toString(track)));
+			params.add(new BasicNameValuePair(TAG_SCORE, Integer.toString(score)));
+			params.add(new BasicNameValuePair(TAG_TOUCHES, Integer.toString(touches)));
+			params.add(new BasicNameValuePair(TAG_ID, id));
 
 			// sending modified data through http request
 			// Notice that update product url accepts POST method
-			JSONObject json = jsonParser.makeHttpRequest(url_update_team,
-					"POST", params);
+			JSONObject json = jsonParser.makeHttpRequest(url_update_team, "POST", params);
 
 			// check json success tag
 			try {
@@ -337,7 +378,7 @@ public class EditTeamActivity extends Activity {
 					setResult(100, i);
 					finish();
 				} else {
-					// failed to update product
+					// failed to update team
 				}
 			} catch (JSONException e) {
 				e.printStackTrace();
@@ -386,8 +427,7 @@ public class EditTeamActivity extends Activity {
 				params.add(new BasicNameValuePair("id", id));
 
 				// getting team details by making HTTP request
-				JSONObject json = jsonParser.makeHttpRequest(url_delete_team,
-						"POST", params);
+				JSONObject json = jsonParser.makeHttpRequest(url_delete_team, "POST", params);
 
 				// check your log for json response
 				Log.d("Delete Product", json.toString());
